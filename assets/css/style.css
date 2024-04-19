@@ -171,7 +171,7 @@ fieldset {
     color: #fff;
 }
 .logo {
-    padding-top: 29px;
+    padding-top: 0px;
 }
 .mainmenu .navbar-nav li a {
     color: #fff;
@@ -209,25 +209,27 @@ fieldset {
 .menu-bg .navbar-nav li a {
     color: #fff;
 }
-.menu-bg .mainmenu .navbar-nav li a {
+.menu-bg .navbar-nav li a {
     padding: 20px 15px;
     -webkit-transition: .3s;
     transition: .3s;
 }
 .menu-bg .logo {
-    padding-top: 18px;
+    padding-top: 2px;
     -webkit-transition: .3s;
     transition: .3s;
 }
-.menu-bg .logo a {
-    color: #23d175;
+.menu-bg .logo {
+    color: #23d175 !important;
 }
-.menu-bg .mainmenu .navbar-nav li a:hover {
+.menu-bg .navbar-nav li a:hover {
     color: #23d175;
 }
 /*02. END MENU DESIGN AREA*/
 /*03.START HOME DESIGN AREA*/
-
+.welcome-slider-area{
+    overflow: hidden;
+}
 .welcome-hero-area,
 .welcome-slider-area,
 .welcome-hero-area,
@@ -763,10 +765,6 @@ ul.work li:hover {
 .owl-carousel .owl-page {
     display: inline-block;
     zoom: 1;
-    *display: inline;
-    /*IE7 life-saver */
-    
-    ;
 }
 .owl-carousel .owl-controls {
     text-align: center;
@@ -937,7 +935,7 @@ a.blog-btn {
 /*13.START CONTACT DESIGN AREA*/
 
 .contact-from {
-    margin-top: 30px;
+    margin-top: 0;
 }
 .contact-from .form-control {
     background-color: #fff;
@@ -952,6 +950,7 @@ a.blog-btn {
     -webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     width: 100%;
+    margin-bottom: 20px;
 }
 .contact-from textarea.form-control {
     height: 200px;
@@ -1007,7 +1006,7 @@ a.blog-btn {
 
 .map {
     height: 386px;
-    margin-top: 30px;
+    margin-top: 0px;
     max-width: 100%;
     overflow: hidden;
 }
@@ -1153,9 +1152,24 @@ ul.contact-list i {
     margin-bottom: 0;
 }
 .text-muted {
-    color: #ddd;
+    color: #ddd !important;
 }
 .text-muted span {
-    color: #23d175;
+    color: #23d175 !important;
 }
 /*15.END FOOTER DESIGN AREA*/
+
+/* new added css */
+/* nav.navbar.navbar-expand-lg.header-top-area{
+    background-color: #000;
+} */
+nav.navbar.navbar-expand-lg.header-top-area li a, nav.navbar.navbar-expand-lg.header-top-area .logo{
+    color: #fff !important;
+    text-transform: capitalize;
+}
+.collapse.navbar-collapse{
+    justify-content: end;
+}
+.navbar-nav{
+    margin-left: auto;
+}
