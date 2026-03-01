@@ -1,0 +1,16 @@
+    <section class="project-complete-area">
+        <div class="container">
+            <div class="row">
+                <% const statList = stats && stats.length ? stats : [{ icon_class: 'fa fa-thumbs-o-up', number: '1200', label: 'project complete' }, { icon_class: 'fa fa-users', number: '600', label: 'Happy Customer' }, { icon_class: 'fa fa-clock-o', number: '800', label: 'Working Hours' }, { icon_class: 'fa fa-coffee', number: '400', label: 'Cups of Coffee' }]; %>
+                <% statList.forEach(s => { %>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-project-complete text-center">
+                        <i class="fa <%= s.icon_class || 'fa-star' %>"></i>
+                        <h2 class="counter-number"><%= s.number || '0' %></h2>
+                        <h6 class="text-muted"><%= s.label || '' %></h6>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>

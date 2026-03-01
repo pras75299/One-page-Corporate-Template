@@ -1,0 +1,43 @@
+    <section id="contact" class="contact-us-area section-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-title text-center">
+                        <h2>Get in touch</h2>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="contact-from">
+                        <form name="contact" class="row" method="post" data-netlify="true" netlify-honeypot="bot-field" action="/">
+                            <input type="hidden" name="form-name" value="contact">
+                            <p class="d-none"><label>Don't fill this out: <input name="bot-field"></label></p>
+                            <div class="form-group col-md-6">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Your Name" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Your Email" required />
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="text" name="subject" class="form-control" id="subject" placeholder="Enter Your Subject">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea rows="6" name="message" class="form-control" id="message" placeholder="Enter Your Message" required></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button type="submit">send message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="map">
+                        <iframe src="<%= (contactInfo && contactInfo.map_embed_src) ? contactInfo.map_embed_src : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.481719333196!2d77.08605677505368!3d28.495151090306933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19b7b90aaef7%3A0xabe8ba0fd3380c83!2scyberhub!5e0!3m2!1sen!2sin!4v1713441639344!5m2!1sen!2sin' %>" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>

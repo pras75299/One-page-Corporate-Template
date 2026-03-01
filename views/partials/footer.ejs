@@ -1,0 +1,92 @@
+    <div class="footer-area footer-bg section-padding">
+        <div class="footer-top-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-widget">
+                            <h4 class="footer-logo"><%- (footer && footer.about_heading) ? footer.about_heading : 'about <span>nastro</span>' %></h4>
+                            <p><%= (footer && footer.about_text) ? footer.about_text : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.' %></p>
+                            <div class="footer-social">
+                                <ul>
+                                    <li><a href="<%= (footer && footer.facebook_url) ? footer.facebook_url : '' %>"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="<%= (footer && footer.twitter_url) ? footer.twitter_url : '' %>"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="<%= (footer && footer.dribbble_url) ? footer.dribbble_url : '' %>"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="<%= (footer && footer.skype_url) ? footer.skype_url : '' %>"><i class="fa fa-skype"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-widget">
+                            <h4 class="footer-widget-title">recent post</h4>
+                            <% const recentPosts = blogPosts && blogPosts.length ? blogPosts.slice(0, 4) : [{ title: 'this is latest post', image_url: 'assets/img/blog/1.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: 'assets/img/blog/2.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: 'assets/img/blog/3.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: 'assets/img/blog/2.jpg', post_date: 'November 12, 2016' }]; %>
+                            <% recentPosts.forEach(rp => { %>
+                            <div class="single-latest-post">
+                                <img src="<%= rp.image_url || 'assets/img/blog/1.jpg' %>" alt="Latest post thumbnail" loading="lazy" />
+                                <h2><%= rp.title || 'this is latest post' %></h2>
+                                <span><i class="fa fa-calendar"></i><%= rp.post_date || 'November 12, 2016' %></span>
+                            </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-widget">
+                            <h4 class="footer-widget-title">Quick links</h4>
+                            <div class="footer-menu">
+                                <ul>
+                                    <li><a href="#home">home</a></li>
+                                    <li><a href="#about">about</a></li>
+                                    <li><a href="#services">service</a></li>
+                                    <li><a href="#blog">blog</a></li>
+                                    <li><a href="#contact">contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer-widget">
+                            <h4 class="footer-logo">Contact Info</h4>
+                            <div class="footer-contact">
+                                <div class="single-contact-info">
+                                    <i class="fa fa-map-marker"></i>
+                                    <h6>address</h6>
+                                    <p><%= (contactInfo && contactInfo.address) ? contactInfo.address : 'New Delhi, Delhi' %></p>
+                                </div>
+                                <div class="single-contact-info">
+                                    <i class="fa fa-phone"></i>
+                                    <h6>phone</h6>
+                                    <p><%= (contactInfo && contactInfo.phone) ? contactInfo.phone : '+1266-3333-77' %></p>
+                                </div>
+                                <div class="single-contact-info">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <h6>Email</h6>
+                                    <p><%= (contactInfo && contactInfo.email) ? contactInfo.email : 'info@your-mail.com' %></p>
+                                </div>
+                                <div class="single-contact-info">
+                                    <i class="fa fa-globe"></i>
+                                    <h6>website</h6>
+                                    <p><%= (contactInfo && contactInfo.website) ? contactInfo.website : 'www.sitename.com' %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer-bottom-area footer-bottom-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="footer-text text-center">
+                        <p class="text-muted"><span><%= (site && site.logo_text) ? site.logo_text : 'Company' %></span> <%- (footer && footer.copyright_text) ? footer.copyright_text : '©2017 - All Right Reserved.' %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="scroll-to-up">
+        <a href="#home" class="scrollup" aria-label="Scroll to top">
+            <i class="fa fa-angle-up" aria-hidden="true"></i>
+        </a>
+    </div>

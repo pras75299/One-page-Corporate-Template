@@ -1,0 +1,27 @@
+    <section id="services" class="our-services-area gry-bg section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-title text-center">
+                        <h2>Our Services</h2>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed ation Lorem ipsum<br>dolor sit amet. Veniam quis notru exercit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <% const svcList = services && services.length ? services : [{ title: 'Web Design', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenati.' }, { title: 'Responsive Design', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenati.' }, { title: 'Marketing', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenati.' }, { title: 'Development', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenati.' }, { title: 'Retina Ready', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenati.' }, { title: 'Seo Ready', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquam justo et nibh venenati.' }]; %>
+                <% svcList.forEach(s => { %>
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-service-box">
+                        <div class="service-icon"><i class="fa <%= s.icon_class || 'fa-briefcase' %>"></i></div>
+                        <div class="service-content">
+                            <h4><%= s.title || '' %></h4>
+                            <p><%= s.description || '' %></p>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>

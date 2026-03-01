@@ -1,0 +1,32 @@
+    <section id="team" class="our-team-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-title text-center">
+                        <h2>Our team</h2>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed ation Lorem ipsum<br>dolor sit amet. Veniam quis notru exercit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <% const members = teamMembers && teamMembers.length ? teamMembers : [{ name: 'John Doe', role: 'web developer', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/team/1.png' }, { name: 'Satya Raman', role: 'graphic designer', bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', image_url: 'assets/img/team/2.png' }, { name: 'John Doe', role: 'social marketing', bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', image_url: 'assets/img/team/3.png' }]; %>
+                <% members.forEach(m => { %>
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-team text-center">
+                        <img src="<%= m.image_url || 'assets/img/team/1.png' %>" alt="<%= m.name %>, <%= m.role %>" class="img-fluid" loading="lazy" />
+                        <h4 class="team-member"><%= m.name || '' %></h4>
+                        <h6><%= m.role || '' %></h6>
+                        <p><%= m.bio || '' %></p>
+                        <ul class="team-social">
+                            <li><a href="<%= m.facebook_url || '#' %>"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="<%= m.twitter_url || '#' %>"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="<%= m.skype_url || '#' %>"><i class="fa fa-skype"></i></a></li>
+                            <li><a href="<%= m.dribbble_url || '#' %>"><i class="fa fa-dribbble"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
