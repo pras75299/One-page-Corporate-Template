@@ -18,6 +18,12 @@
 	14. START MAP DESIGN
 	15. START FOOTER DESIGN
   =============================================================*/
+/*CSS variables for theming (React/Next can override)*/
+:root {
+    --brand-primary: #23d175;
+    --brand-primary-hover: #17a158;
+}
+
 /*01.GENERAL STYLE*/
 
 body {
@@ -101,7 +107,12 @@ fieldset {
 /*START SCROLL TO UP DESIGN*/
 
 .scrollup {
-    background: #23d175 none repeat scroll 0 0;
+    background: var(--brand-primary) none repeat scroll 0 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
     border-radius: 50%;
     bottom: 30px;
     color: #fff;
@@ -117,7 +128,8 @@ fieldset {
     z-index: 9;
 }
 .scrollup:hover {
-    background: #17a158;
+    background: var(--brand-primary-hover);
+    color: #fff;
     -webkit-transition: .5s;
     transition: .5s;
 }
@@ -268,13 +280,15 @@ a.slide-btn:hover {
     color: #fff;
     border: none;
 }
-.single-slide-item h2 {
+.single-slide-item h2,
+.single-slide-item .hero-title {
     font-size: 50px;
     color: #fff;
     line-height: 50px;
     margin-bottom: 20px;
 }
-.single-slide-item h2 span {
+.single-slide-item h2 span,
+.single-slide-item .hero-title span {
     color: #2980b9;
 }
 .single-slide-item p {
@@ -827,7 +841,7 @@ ul.work li:hover {
 }
 .plan-month span {
     font-size: 18px;
-    text-transform: lowarecase;
+    text-transform: lowercase;
 }
 .package-detail {
     padding: 20px 20px 30px;

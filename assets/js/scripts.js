@@ -2,11 +2,14 @@
   "use strict";
 
   $(document).ready(function () {
-    /*START PRELOADED*/
+    /*START PRELOADED (with timeout fallback so page never stays blank)*/
     $(window).on("load", function () {
       $(".preloader").fadeOut();
       $(".preloader-area").delay(350).fadeOut("slow");
     });
+    setTimeout(function () {
+      $(".preloader").fadeOut();
+    }, 4000);
     /*END PRELOADED*/
     /*START CHANGE MENU BACKGROUND JS*/
     $(window).on("scroll", function () {
@@ -19,7 +22,8 @@
     /*END CHANGE MENU BACKGROUND JS*/
 
     /*START SCROLL TO UP*/
-    $(".scrollup").on("click", function () {
+    $(".scrollup").on("click", function (e) {
+      e.preventDefault();
       $("html, body").animate(
         {
           scrollTop: 0,
@@ -70,20 +74,7 @@
     });
     /*COUNTER UP JS*/
 
-    /*START WORK JS*/
-    $(".work-inner").mixItUp({
-      selectors: {
-        target: ".mix", // The class applied to the individual items
-        filter: ".filter", // The class applied to the filter controls
-      },
-      load: {
-        filter: "all", // This controls what is shown when the page loads; 'all' shows all items
-      },
-      animation: {
-        effects: "fade scale", // This is just an example, you can choose your own effects
-      },
-    });
-    /*END WORK JS*/
+    /*WORK SECTION: static grid (MixItUp removed — filter UI commented out in HTML)*/
 
     /*START MENU HIDE*/
     $(document).on("click", ".navbar-collapse.in", function (e) {
@@ -104,7 +95,7 @@
     /*END BOOTSTRAP SCROLL-SPY*/
 
     /*START SMOOTH SCROLL JS*/
-    $("a.smoth-scroll").on("click", function (e) {
+    $("a.smooth-scroll").on("click", function (e) {
       var anchor = $(this);
       $("html, body")
         .stop()
