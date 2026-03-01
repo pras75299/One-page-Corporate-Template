@@ -1,5 +1,12 @@
 # One-Page Corporate Template — Improvements & Branching Plan
 
+**Status:** Part 1 (improvements) and Part 2 (branching) have been applied.
+
+- **Part 1** is committed on `master`: typos, SEO meta, a11y (alt text, main, scroll-to-top), Netlify Forms, CSS variables, preloader timeout, MixItUp removed, Font Awesome CDN.
+- **Part 2:** Branch `template-react` has React (Vite) app in `react-app/`. Branch `template-nextjs` has Next.js (App Router) app in `next-app/`.
+
+---
+
 ## Part 1: Code Review & Improvements
 
 ### 1. Fix typos and consistency
