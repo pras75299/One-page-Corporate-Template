@@ -8,6 +8,15 @@ const adminRoutes = require('./server/routes/admin');
 
 const app = express();
 
+// Strip Netlify function path so "/" and "/admin" etc. match correctly (fixes "Cannot GET /")
+app.use((req, res, next) => {
+  const prefix = '/.netlify/functions/server';
+  if (req.path === prefix || req.path.startsWith(prefix + '/')) {
+    req.url = (req.path === prefix ? '/' : req.path.slice(prefix.length)) || '/';
+  }
+  next();
+});
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -45,7 +54,6 @@ app.get('/admin', (req, res, next) => {
   }
 });
 
-// Handle both '' and '/' (Netlify can request /.netlify/functions/server with no trailing slash)
 const homeHandler = async (req, res) => {
   try {
     const content = await getSiteContent();
@@ -56,6 +64,6 @@ const homeHandler = async (req, res) => {
   }
 };
 app.get('/', homeHandler);
-app.get('', homeHandler);
+app.get('', homeHandler); // Netlify sometimes forwards with path ""
 
 module.exports = app;
