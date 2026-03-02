@@ -45,7 +45,8 @@ app.get('/admin', (req, res, next) => {
   }
 });
 
-app.get('/', async (req, res) => {
+// Handle both '' and '/' (Netlify can request /.netlify/functions/server with no trailing slash)
+const homeHandler = async (req, res) => {
   try {
     const content = await getSiteContent();
     res.render('home', content);
@@ -53,6 +54,8 @@ app.get('/', async (req, res) => {
     console.error(err);
     res.status(500).send('Site content unavailable. Run npm run seed after setting up the database.');
   }
-});
+};
+app.get('/', homeHandler);
+app.get('', homeHandler);
 
 module.exports = app;
