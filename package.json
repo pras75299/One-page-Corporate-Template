@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
+    "start:4000": "PORT=4000 node server.js",
     "seed": "node server/seed.js",
     "init-db": "node server/init-db.js"
   },
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "serverless-http": "^3.2.0",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",

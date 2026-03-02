@@ -1,0 +1,23 @@
+# One-Page Corporate Template — Netlify deploy (backend = Express as serverless function)
+# Set env in Netlify UI: DATABASE_URL, SESSION_SECRET, ADMIN_PASSWORD (optional)
+
+[build]
+  command = "echo 'No static build; functions only'"
+  publish = "public"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["pg"]
+  # Include app, server, views, assets so the function can require('../../app') and serve views/assets
+  included_files = ["./app.js", "./server/**", "./views/**", "./assets/**"]
+
+# Send all traffic to the Express app so the "index" is dynamic (DB-driven)
+[[redirects]]
+  force = true
+  from = "/*"
+  status = 200
+  to = "/.netlify/functions/server/:splat"
