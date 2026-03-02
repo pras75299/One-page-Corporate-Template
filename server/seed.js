@@ -9,7 +9,8 @@ const bcrypt = require('bcryptjs');
 async function seed() {
   const client = await pool.connect();
   try {
-    const passwordHash = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'admin123', 10);
+    const defaultPassword = process.env.ADMIN_PASSWORD || 'change-me';
+const passwordHash = await bcrypt.hash(defaultPassword, 10);
     await client.query(
       `INSERT INTO admin_users (username, password_hash) VALUES ('admin', $1) ON CONFLICT (username) DO NOTHING`,
       [passwordHash]
@@ -140,7 +141,7 @@ async function seed() {
         ('about <span>nastro</span>', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type', '', '', '', '', '©2017 - All Right Reserved.')
     `);
 
-    console.log('Seed completed. Default admin: username=admin, password=admin123 (or ADMIN_PASSWORD env)');
+    console.log('Seed completed. Admin user: username=admin (password from ADMIN_PASSWORD env)');
   } catch (err) {
     console.error('Seed failed:', err.message);
     process.exit(1);
