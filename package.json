@@ -7,7 +7,7 @@
     "start": "node server.js",
     "dev": "node server.js",
     "seed": "node server/seed.js",
-    "init-db": "psql $DATABASE_URL -f server/schema.sql"
+    "init-db": "node server/init-db.js"
   },
   "engines": {
     "node": ">=18"
