@@ -1,9 +1,12 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
+const connectionString = process.env.DATABASE_URL;
+const isRemoteDb = connectionString && !connectionString.includes('localhost');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  connectionString,
+  ssl: isRemoteDb ? { rejectUnauthorized: false } : false,
+  connectionTimeoutMillis: 10000,
 });
 
 async function query(text, params) {

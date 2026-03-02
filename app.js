@@ -56,11 +56,17 @@ app.get('/admin', (req, res, next) => {
 
 const homeHandler = async (req, res) => {
   try {
+    if (!process.env.DATABASE_URL) {
+      console.error('DATABASE_URL is not set');
+      return res.status(500).send('Site content unavailable. Set DATABASE_URL in Netlify environment variables.');
+    }
     const content = await getSiteContent();
     res.render('home', content);
   } catch (err) {
-    console.error(err);
-    res.status(500).send('Site content unavailable. Run npm run seed after setting up the database.');
+    console.error('getSiteContent failed:', err.message);
+    res.status(500).send(
+      'Site content unavailable. Set DATABASE_URL in env, then run (against that DB): npm run init-db && npm run seed. Check function logs for details.'
+    );
   }
 };
 app.get('/', homeHandler);
