@@ -11,7 +11,7 @@
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["pg"]
+  external_node_modules = ["pg", "ejs"]
   # Include app, server, views, assets so the function can require('../../app') and serve views/assets
   included_files = ["./app.js", "./server/**", "./views/**", "./assets/**"]
 
