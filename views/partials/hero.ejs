@@ -1,0 +1,39 @@
+        <div class="welcome-slider-area">
+            <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
+                <div class="carousel-inner">
+                    <% const slides = heroSlides && heroSlides.length ? heroSlides : [{ title: 'We are creative agency', subtitle: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry' }]; %>
+                    <% slides.forEach((slide, i) => { %>
+                    <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                        <div class="single-slide-item slide-<%= (i % 3) + 1 %>">
+                            <div class="single-slide-item-table">
+                                <div class="single-slide-item-table-cell">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h1 class="hero-title"><%= i === 0 ? (slide.title || '') : '' %></h1>
+                                                <% if (i !== 0) { %><h2><%= slide.title || '' %></h2><% } %>
+                                                <p><%= slide.subtitle || '' %><br /><%= slide.subtitle || '' %></p>
+                                                <a class="slide-btn smooth-scroll" href="#contact">contact</a>
+                                                <a class="slide-btn smooth-scroll" href="#about">about</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+                <button class="carousel-control-prev left welcome-control" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next right welcome-control" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>

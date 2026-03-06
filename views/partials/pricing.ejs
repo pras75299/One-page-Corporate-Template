@@ -1,0 +1,33 @@
+    <section id="pricing" class="our-pricing-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-title text-center">
+                        <h2>our pricing plan</h2>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed ation Lorem ipsum<br>dolor sit amet. Veniam quis notru exercit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <% const plans = pricingPlans && pricingPlans.length ? pricingPlans : [{ title: 'starter', price: 59, features: 'Basic Updates\nBasic Features\nCommunity Support\n10 domain user\nsub-domain support\n10 ftp account', button_text: 'get started' }, { title: 'premium', price: 59, features: 'Basic Updates\nBasic Features\nCommunity Support\n10 domain user\nsub-domain support\n10 ftp account', button_text: 'get started' }, { title: 'ultimate', price: 59, features: 'Basic Updates\nBasic Features\nCommunity Support\n10 domain user\nsub-domain support\n10 ftp account', button_text: 'get started' }]; %>
+                <% plans.forEach(plan => { const feats = (plan.features || '').toString().split('\n').filter(Boolean); %>
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-price-box text-center">
+                        <div class="package-title"><%= plan.title || '' %></div>
+                        <div class="package-value">
+                            <div class="package-price"><sub>$</sub> <%= plan.price != null ? plan.price : 59 %></div>
+                            <div class="plan-month"><span>per month </span></div>
+                        </div>
+                        <div class="package-detail">
+                            <ul class="list-unstyled">
+                                <% feats.length ? feats.forEach(f => { %><li><%= f %></li><% }) : ['Basic Updates','Basic Features','Community Support','10 domain user','sub-domain support','10 ftp account'].forEach(f => { %><li><%= f %></li><% }); %>
+                            </ul>
+                            <a class="package-btn" href="#"><%= plan.button_text || 'get started' %></a>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>

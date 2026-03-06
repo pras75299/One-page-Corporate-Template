@@ -1,0 +1,34 @@
+    <section id="blog" class="our-blog-area gry-bg section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-title text-center">
+                        <h2>Latest News</h2>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed ation Lorem ipsum<br>dolor sit amet. Veniam quis notru exercit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <% const posts = blogPosts && blogPosts.length ? blogPosts : [{ title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/blog/1.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }, { title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/blog/2.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }, { title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/blog/3.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }]; %>
+                <% posts.forEach(post => { %>
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-blog-post">
+                        <div class="single-blog-thumb">
+                            <img src="<%= post.image_url || 'assets/img/blog/1.jpg' %>" alt="Blog post" class="img-fluid" loading="lazy" />
+                        </div>
+                        <div class="single-post-content">
+                            <ul class="post-meta">
+                                <li><a href="#"><i class="fa fa-calendar"></i><%= post.post_date || '12 dec 2016' %></a></li>
+                                <li><a href="#"><i class="fa fa-comment"></i><%= post.comment_count || '30 comment' %></a></li>
+                            </ul>
+                            <h4><a href="<%= post.link || '#' %>"><%= post.title || 'blog post title here' %></a></h4>
+                            <p><%= post.excerpt || '' %></p>
+                            <a class="blog-btn" href="<%= post.link || '#' %>">read more</a>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+        </div>
+    </section>
