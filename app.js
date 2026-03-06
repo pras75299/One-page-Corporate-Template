@@ -17,8 +17,13 @@ app.use((req, res, next) => {
   next();
 });
 
+// On Netlify, the function runs from netlify/functions/ so __dirname points there; views/assets are at repo root
+const rootDir = /netlify[/\\]functions/.test(__dirname)
+  ? path.resolve(__dirname, '..', '..')
+  : __dirname;
+
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(rootDir, 'views'));
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'corporate-template-secret-change-in-production',
@@ -30,8 +35,8 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assets', express.static(path.join(rootDir, 'assets')));
+app.use(express.static(path.join(rootDir, 'public')));
 
 app.use(publicRoutes);
 app.use(adminRoutes);
