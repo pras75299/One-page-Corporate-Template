@@ -10,12 +10,12 @@
                 </div>
             </div>
             <div class="row">
-                <% const posts = blogPosts && blogPosts.length ? blogPosts : [{ title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/blog/1.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }, { title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/blog/2.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }, { title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/blog/3.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }]; %>
+                <% const posts = blogPosts && blogPosts.length ? blogPosts : [{ title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: '/assets/img/blog/1.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }, { title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: '/assets/img/blog/2.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }, { title: 'blog post title here', excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: '/assets/img/blog/3.jpg', post_date: '12 dec 2016', comment_count: '30 comment', link: '#' }]; %>
                 <% posts.forEach(post => { %>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-blog-post">
                         <div class="single-blog-thumb">
-                            <img src="<%= post.image_url || 'assets/img/blog/1.jpg' %>" alt="Blog post" class="img-fluid" loading="lazy" />
+                            <img src="<%= post.image_url || '/assets/img/blog/1.jpg' %>" alt="Blog post" class="img-fluid" loading="lazy" />
                         </div>
                         <div class="single-post-content">
                             <ul class="post-meta">

@@ -2,11 +2,11 @@
         <div class="testimonial-section-inner">
             <div class="container">
                 <div class="testimonial-list text-center">
-                    <% const testList = testimonials && testimonials.length ? testimonials : [{ quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", author_name: 'Mark Zuckerberg', author_role: 'ceo of facebook', image_url: 'assets/img/testimonial/1.jpg' }, { quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", author_name: 'Jack Dorsey', author_role: 'ceo of twitter', image_url: 'assets/img/testimonial/2.jpg' }, { quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", author_name: 'Sundar Pichai', author_role: 'ceo of google', image_url: 'assets/img/testimonial/3.jpg' }]; %>
+                    <% const testList = testimonials && testimonials.length ? testimonials : [{ quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.", author_name: 'Mark Zuckerberg', author_role: 'ceo of facebook', image_url: '/assets/img/testimonial/1.jpg' }, { quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", author_name: 'Jack Dorsey', author_role: 'ceo of twitter', image_url: '/assets/img/testimonial/2.jpg' }, { quote: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.", author_name: 'Sundar Pichai', author_role: 'ceo of google', image_url: '/assets/img/testimonial/3.jpg' }]; %>
                     <% testList.forEach(t => { %>
                     <div class="single-testimonial">
                         <div class="testimonial-author">
-                            <img src="<%= t.image_url || 'assets/img/testimonial/1.jpg' %>" alt="<%= t.author_name %>, <%= t.author_role %>" loading="lazy" />
+                            <img src="<%= t.image_url || '/assets/img/testimonial/1.jpg' %>" alt="<%= t.author_name %>, <%= t.author_role %>" loading="lazy" />
                         </div>
                         <p><%= t.quote || '' %></p>
                         <h5><%= t.author_name || '' %></h5>

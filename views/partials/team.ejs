@@ -10,11 +10,11 @@
                 </div>
             </div>
             <div class="row">
-                <% const members = teamMembers && teamMembers.length ? teamMembers : [{ name: 'John Doe', role: 'web developer', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: 'assets/img/team/1.png' }, { name: 'Satya Raman', role: 'graphic designer', bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', image_url: 'assets/img/team/2.png' }, { name: 'John Doe', role: 'social marketing', bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', image_url: 'assets/img/team/3.png' }]; %>
+                <% const members = teamMembers && teamMembers.length ? teamMembers : [{ name: 'John Doe', role: 'web developer', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', image_url: '/assets/img/team/1.png' }, { name: 'Satya Raman', role: 'graphic designer', bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', image_url: '/assets/img/team/2.png' }, { name: 'John Doe', role: 'social marketing', bio: 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', image_url: '/assets/img/team/3.png' }]; %>
                 <% members.forEach(m => { %>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-team text-center">
-                        <img src="<%= m.image_url || 'assets/img/team/1.png' %>" alt="<%= m.name %>, <%= m.role %>" class="img-fluid" loading="lazy" />
+                        <img src="<%= m.image_url || '/assets/img/team/1.png' %>" alt="<%= m.name %>, <%= m.role %>" class="img-fluid" loading="lazy" />
                         <h4 class="team-member"><%= m.name || '' %></h4>
                         <h6><%= m.role || '' %></h6>
                         <p><%= m.bio || '' %></p>

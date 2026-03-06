@@ -19,10 +19,10 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-widget">
                             <h4 class="footer-widget-title">recent post</h4>
-                            <% const recentPosts = blogPosts && blogPosts.length ? blogPosts.slice(0, 4) : [{ title: 'this is latest post', image_url: 'assets/img/blog/1.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: 'assets/img/blog/2.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: 'assets/img/blog/3.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: 'assets/img/blog/2.jpg', post_date: 'November 12, 2016' }]; %>
+                            <% const recentPosts = blogPosts && blogPosts.length ? blogPosts.slice(0, 4) : [{ title: 'this is latest post', image_url: '/assets/img/blog/1.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: '/assets/img/blog/2.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: '/assets/img/blog/3.jpg', post_date: 'November 12, 2016' }, { title: 'this is latest post', image_url: '/assets/img/blog/2.jpg', post_date: 'November 12, 2016' }]; %>
                             <% recentPosts.forEach(rp => { %>
                             <div class="single-latest-post">
-                                <img src="<%= rp.image_url || 'assets/img/blog/1.jpg' %>" alt="Latest post thumbnail" loading="lazy" />
+                                <img src="<%= rp.image_url || '/assets/img/blog/1.jpg' %>" alt="Latest post thumbnail" loading="lazy" />
                                 <h2><%= rp.title || 'this is latest post' %></h2>
                                 <span><i class="fa fa-calendar"></i><%= rp.post_date || 'November 12, 2016' %></span>
                             </div>

@@ -11,12 +11,12 @@
             </div>
             <div class="work-inner">
                 <div class="row work-post">
-                    <% const workItems = portfolio && portfolio.length ? portfolio : Array.from({ length: 9 }, (_, i) => ({ image_url: 'assets/img/work/' + (i + 1) + '.jpg', title: 'project name', category: 'development' })); %>
+                    <% const workItems = portfolio && portfolio.length ? portfolio : Array.from({ length: 9 }, (_, i) => ({ image_url: '/assets/img/work/' + (i + 1) + '.jpg', title: 'project name', category: 'development' })); %>
                     <% workItems.forEach((p, idx) => { const classes = ['design video', 'development print', 'video', 'video', 'print', 'design', 'development', 'development design', 'print'][idx % 9] || 'design'; %>
                     <div class="col-md-4 col-sm-4 <%= classes %>">
                         <div class="single-work">
-                            <img src="<%= p.image_url || 'assets/img/work/1.jpg' %>" class="img-fluid" alt="Portfolio project <%= idx + 1 %>" loading="lazy" />
-                            <a href="<%= p.image_url || 'assets/img/work/1.jpg' %>" class="work-popup">
+                            <img src="<%= p.image_url || '/assets/img/work/1.jpg' %>" class="img-fluid" alt="Portfolio project <%= idx + 1 %>" loading="lazy" />
+                            <a href="<%= p.image_url || '/assets/img/work/1.jpg' %>" class="work-popup">
                                 <div class="work-details text-center">
                                     <div class="overlay"></div>
                                     <div class="work-info-text">
