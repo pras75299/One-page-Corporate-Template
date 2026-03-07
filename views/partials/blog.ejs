@@ -15,7 +15,7 @@
                 <div class="col-md-4 col-sm-6">
                     <div class="single-blog-post">
                         <div class="single-blog-thumb">
-                            <img src="<%= post.image_url || '/assets/img/blog/1.jpg' %>" alt="Blog post" class="img-fluid" loading="lazy" />
+                            <img src="<%= assetUrl(post.image_url, '/assets/img/blog/1.jpg') %>" alt="Blog post" class="img-fluid" loading="lazy" />
                         </div>
                         <div class="single-post-content">
                             <ul class="post-meta">

@@ -80,9 +80,9 @@ const passwordHash = await bcrypt.hash(defaultPassword, 10);
     await client.query('DELETE FROM team_members');
     await client.query(`
       INSERT INTO team_members (name, role, bio, image_url, facebook_url, twitter_url, skype_url, dribbble_url, sort_order) VALUES
-        ('John Doe', 'web developer', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'assets/img/team/1.png', '#', '#', '#', '#', 0),
-        ('Satya Raman', 'graphic designer', 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', 'assets/img/team/2.png', '#', '#', '#', '#', 1),
-        ('John Doe', 'social marketing', 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', 'assets/img/team/3.png', '#', '#', '#', '#', 2)
+        ('John Doe', 'web developer', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '/assets/img/team/1.png', '#', '#', '#', '#', 0),
+        ('Satya Raman', 'graphic designer', 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', '/assets/img/team/2.png', '#', '#', '#', '#', 1),
+        ('John Doe', 'social marketing', 'Lorem ipsum dolor sit amet consectetur adipisicing elitsed.', '/assets/img/team/3.png', '#', '#', '#', '#', 2)
     `);
 
     await client.query('DELETE FROM stats');
@@ -99,16 +99,16 @@ const passwordHash = await bcrypt.hash(defaultPassword, 10);
     for (let i = 0; i < workImages.length; i++) {
       await client.query(
         'INSERT INTO portfolio_items (image_url, title, category, sort_order) VALUES ($1, $2, $3, $4)',
-        [`assets/img/work/${workImages[i]}.jpg`, 'project name', 'development', i]
+        [`/assets/img/work/${workImages[i]}.jpg`, 'project name', 'development', i]
       );
     }
 
     await client.query('DELETE FROM testimonials');
     await client.query(`
       INSERT INTO testimonials (quote, author_name, author_role, image_url, sort_order) VALUES
-        ('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s.', 'Mark Zuckerberg', 'ceo of facebook', 'assets/img/testimonial/1.jpg', 0),
-        ('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s.', 'Jack Dorsey', 'ceo of twitter', 'assets/img/testimonial/2.jpg', 1),
-        ('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s.', 'Sundar Pichai', 'ceo of google', 'assets/img/testimonial/3.jpg', 2)
+        ('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s.', 'Mark Zuckerberg', 'ceo of facebook', '/assets/img/testimonial/1.jpg', 0),
+        ('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s.', 'Jack Dorsey', 'ceo of twitter', '/assets/img/testimonial/2.jpg', 1),
+        ('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s.', 'Sundar Pichai', 'ceo of google', '/assets/img/testimonial/3.jpg', 2)
     `);
 
     const planFeatures = 'Basic Updates\nBasic Features\nCommunity Support\n10 domain user\nsub-domain support\n10 ftp account';
@@ -123,9 +123,9 @@ const passwordHash = await bcrypt.hash(defaultPassword, 10);
     await client.query('DELETE FROM blog_posts');
     await client.query(`
       INSERT INTO blog_posts (title, excerpt, image_url, post_date, comment_count, link, sort_order) VALUES
-        ('blog post title here', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'assets/img/blog/1.jpg', '12 dec 2016', '30 comment', '#', 0),
-        ('blog post title here', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'assets/img/blog/2.jpg', '12 dec 2016', '30 comment', '#', 1),
-        ('blog post title here', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 'assets/img/blog/3.jpg', '12 dec 2016', '30 comment', '#', 2)
+        ('blog post title here', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '/assets/img/blog/1.jpg', '12 dec 2016', '30 comment', '#', 0),
+        ('blog post title here', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '/assets/img/blog/2.jpg', '12 dec 2016', '30 comment', '#', 1),
+        ('blog post title here', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', '/assets/img/blog/3.jpg', '12 dec 2016', '30 comment', '#', 2)
     `);
 
     await client.query('DELETE FROM contact_info');

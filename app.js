@@ -25,6 +25,14 @@ const rootDir = /netlify[/\\]functions/.test(__dirname)
 app.set('view engine', 'ejs');
 app.set('views', path.join(rootDir, 'views'));
 
+// Ensure asset URLs are root-relative so images load on Netlify (DB may store "assets/img/..." without leading slash)
+function assetUrl(url, defaultPath) {
+  const u = url || defaultPath || '';
+  if (!u || u.startsWith('http') || u.startsWith('//')) return u;
+  return u.startsWith('/') ? u : '/' + u;
+}
+app.locals.assetUrl = assetUrl;
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'corporate-template-secret-change-in-production',
   resave: false,

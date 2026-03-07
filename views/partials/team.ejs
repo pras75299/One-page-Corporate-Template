@@ -14,7 +14,7 @@
                 <% members.forEach(m => { %>
                 <div class="col-md-4 col-sm-6">
                     <div class="single-team text-center">
-                        <img src="<%= m.image_url || '/assets/img/team/1.png' %>" alt="<%= m.name %>, <%= m.role %>" class="img-fluid" loading="lazy" />
+                        <img src="<%= assetUrl(m.image_url, '/assets/img/team/1.png') %>" alt="<%= m.name %>, <%= m.role %>" class="img-fluid" loading="lazy" />
                         <h4 class="team-member"><%= m.name || '' %></h4>
                         <h6><%= m.role || '' %></h6>
                         <p><%= m.bio || '' %></p>

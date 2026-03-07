@@ -6,7 +6,7 @@
                     <% testList.forEach(t => { %>
                     <div class="single-testimonial">
                         <div class="testimonial-author">
-                            <img src="<%= t.image_url || '/assets/img/testimonial/1.jpg' %>" alt="<%= t.author_name %>, <%= t.author_role %>" loading="lazy" />
+                            <img src="<%= assetUrl(t.image_url, '/assets/img/testimonial/1.jpg') %>" alt="<%= t.author_name %>, <%= t.author_role %>" loading="lazy" />
                         </div>
                         <p><%= t.quote || '' %></p>
                         <h5><%= t.author_name || '' %></h5>

@@ -16,7 +16,13 @@
   # Include app, server, views, assets so the function can require('../../app') and serve views/assets
   included_files = ["./app.js", "./server/**", "./views/**", "./assets/**"]
 
-# Send all traffic to the Express app so the "index" is dynamic (DB-driven)
+# Serve /assets/* from publish dir (images, CSS, JS) — must come before catch-all
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+
+# Send all other traffic to the Express app (DB-driven pages)
 [[redirects]]
   force = true
   from = "/*"
