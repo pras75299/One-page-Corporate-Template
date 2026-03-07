@@ -2,7 +2,8 @@
 # Set env in Netlify UI: DATABASE_URL, SESSION_SECRET, ADMIN_PASSWORD (optional)
 
 [build]
-  command = "echo 'No static build; functions only'"
+  # Copy assets into publish dir so Netlify serves images/CSS/JS from CDN (static files take precedence over function rewrite)
+  command = "cp -r assets public/assets"
   publish = "public"
   functions = "netlify/functions"
 

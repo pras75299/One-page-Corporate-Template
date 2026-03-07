@@ -35,7 +35,9 @@ app.use(session({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve assets (images, CSS, JS). On Netlify, /assets/* is usually served from CDN; this handles requests that still hit the function
 app.use('/assets', express.static(path.join(rootDir, 'assets')));
+app.use('/.netlify/functions/server/assets', express.static(path.join(rootDir, 'assets')));
 app.use(express.static(path.join(rootDir, 'public')));
 
 app.use(publicRoutes);
