@@ -1,66 +1,171 @@
-# Project Name: One-Page Template
+# One-Page Corporate Template
 
-## Description
-
-This project is a responsive, lightweight one-page template designed to showcase [specific type of content, e.g., personal portfolio, product, event]. It's built with HTML, CSS, jQuery, and Bootstrap, making it easily customizable and adaptable to various needs.
+A responsive one-page corporate/agency template with an **admin panel** and **PostgreSQL** backend. Content (hero, team, portfolio, testimonials, blog, etc.) is stored in the database and editable via the admin; the same app runs locally or on **Netlify** as a serverless function.
 
 ## Features
 
-- **Responsive Design**: Ensures that the website looks great on devices of all sizes.
-- **Bootstrap Framework**: Utilizes Bootstrap for consistent styling and layout.
-- **jQuery Integration**: Enhances the template with interactive elements.
+- **Responsive design** – Bootstrap 3, works on all screen sizes
+- **Database-driven content** – Hero slides, team, work, testimonials, blog, pricing, contact
+- **Admin panel** – Edit all content at `/admin` (login required)
+- **Static assets** – Images, CSS, and JS served from `/assets` (CDN on Netlify)
+- **Netlify-ready** – Full backend runs as a serverless function; images and assets served from the publish directory
 
-## Getting Started
+## Tech stack
 
-To get a local copy up and running, follow these simple steps.
+- **Frontend:** HTML (EJS), Bootstrap 5, jQuery, Owl Carousel, Magnific Popup
+- **Backend:** Node.js, Express, EJS, express-session
+- **Database:** PostgreSQL
+- **Deploy:** Netlify (Functions + static publish)
 
-- Open index.html file in any browser
+---
+
+## Local setup
+
+Follow these steps to run the project on your machine.
 
 ### Prerequisites
 
-- A modern web browser.
-- Basic knowledge of HTML, CSS, and JavaScript.
+- **Node.js** 18 or later
+- **PostgreSQL** (local install or a hosted DB e.g. [Neon](https://neon.tech), [Supabase](https://supabase.com), [Railway](https://railway.app))
 
-### Installation
+### 1. Clone and install
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/pras75299/One-page-Corporate-Template.git
-   ```
+```bash
+git clone https://github.com/pras75299/One-page-Corporate-Template.git
+cd One-page-Corporate-Template
+npm install
+```
 
-## Admin panel + backend (Node.js, Express, PostgreSQL)
+### 2. Environment variables
 
-You can run the site with a backend so content is stored in PostgreSQL and editable via an admin panel. Changes in the admin reflect on the main page.
+Copy the example env file and edit it:
 
-### Setup
+```bash
+cp .env.example .env
+```
 
-1. **PostgreSQL**: Create a database and set `DATABASE_URL` in a `.env` file (see `.env.example`).
-2. **Schema**: Create tables with  
-   `psql $DATABASE_URL -f server/schema.sql`
-3. **Seed**: Populate default content and admin user with  
-   `npm run seed`  
-   Default admin: username `admin`, password from `ADMIN_PASSWORD` in `.env` (set it before running seed).
-4. **Run**: `npm install` then `npm start`. Open http://localhost:3000 for the site and http://localhost:3000/admin to log in and edit content.
+Edit `.env` and set:
 
-## Deploy to Netlify (backend + dynamic “index”)
 
-The repo is set up so the **entire backend runs on Netlify** as a serverless function. The site’s home page (“index”) is **not** a static file; it’s rendered from the database on every request, so updates in the admin panel are reflected as soon as someone visits the site.
+| Variable         | Description                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------- |
+| `DATABASE_URL`   | PostgreSQL connection string (e.g. `postgresql://user:password@localhost:5432/corporate_template`) |
+| `SESSION_SECRET` | Random string for admin sessions (use a long random value in production)                           |
+| `ADMIN_PASSWORD` | Password for the admin user (used when you run the seed; set before seeding)                       |
 
-### Netlify setup
 
-1. **Connect the repo** to Netlify (GitHub/GitLab/Bitbucket).
-2. **Build settings** (optional): build command can stay empty or use `echo 'Functions only'`; publish directory = `public`.
-3. **Environment variables** (Site settings → Environment variables):
-   - `DATABASE_URL` – your PostgreSQL connection string (e.g. from Neon, Supabase, Railway).
-   - `SESSION_SECRET` – a long random string for admin sessions.
-   - `ADMIN_PASSWORD` – (optional) used when you run `npm run seed`; set before seeding the production DB.
-4. **Deploy**. All traffic is redirected to the Express app (see `netlify.toml`). The home page and `/admin` are served by the backend; content comes from the database.
+Example:
 
-### One-time database setup for production
+```env
+DATABASE_URL=postgresql://user:password@localhost:5432/corporate_template
+SESSION_SECRET=your-secret-key-change-in-production
+ADMIN_PASSWORD=your-secure-password
+```
 
-From your machine (with `DATABASE_URL` in `.env` pointing at the **production** DB):
+### 3. Database setup
 
-- `npm run init-db` – create tables  
-- `npm run seed` – insert default content and admin user  
+Create the schema and seed default content (and the admin user):
 
-After that, the Netlify site will read the same DB; changes in the admin will show up on the next page load.
+```bash
+npm run init-db    # Creates tables
+npm run seed       # Inserts default content + admin user (uses ADMIN_PASSWORD from .env)
+```
+
+### 4. Run the app
+
+```bash
+npm start
+```
+
+- **Site:** [http://localhost:3000](http://localhost:3000)  
+- **Admin:** [http://localhost:3000/admin](http://localhost:3000/admin) (login: `admin` / password from `ADMIN_PASSWORD`)
+
+---
+
+## Running without the backend (static only)
+
+You can open the static `index.html` in a browser for a quick look. It uses hardcoded content and relative asset paths; for full content editing and production-like behavior, use the Node/Express setup above.
+
+---
+
+## Deploy to Netlify
+
+The repo is configured so the **entire backend runs as a Netlify serverless function**. The home page is rendered from the database on each request; the admin panel is at `/admin`. **Images and other assets** (`/assets/`*) are served from the publish directory so they load quickly from the CDN.
+
+### Netlify build settings
+
+- **Build command:** `cp -r assets public/assets`  
+(This copies images, CSS, and JS into the publish directory so Netlify can serve them at `/assets/`*.)
+- **Publish directory:** `public`
+- **Functions directory:** `netlify/functions`
+
+### Environment variables (Netlify UI)
+
+In **Site settings → Environment variables**, add:
+
+
+| Variable         | Description                                                                                   |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| `DATABASE_URL`   | PostgreSQL connection string for your **production** database                                 |
+| `SESSION_SECRET` | Long random string for admin sessions                                                         |
+| `ADMIN_PASSWORD` | Optional; only needed if you seed the production DB (set before running seed against that DB) |
+
+
+### One-time production database setup
+
+From your machine, point `.env` at the **production** database (the same `DATABASE_URL` as in Netlify), then run:
+
+```bash
+npm run init-db    # Create tables
+npm run seed       # Insert default content and admin user
+```
+
+After that, the Netlify site will use that database; changes in the admin will appear on the next page load.
+
+### How it works on Netlify
+
+- **Redirects** (in `netlify.toml`): Requests to `/assets/`* are served from the publish directory (images, CSS, JS). All other routes go to the Express app via `/.netlify/functions/server`.
+- **Images:** Stored under `assets/img/` (team, work, testimonials, blog, etc.). The build copies them into `public/assets/` so they are available at `/assets/img/...`. The app also normalizes image URLs (with or without a leading slash) so they work everywhere.
+
+---
+
+## Scripts
+
+
+| Command           | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| `npm start`       | Run the Express server (default port 3000)        |
+| `npm run init-db` | Create PostgreSQL tables from `server/schema.sql` |
+| `npm run seed`    | Seed default content and create admin user        |
+
+
+---
+
+## Project structure (relevant parts)
+
+```
+├── app.js                 # Express app (routes, static, views)
+├── server.js              # Local entry (starts app on a port)
+├── server/
+│   ├── schema.sql         # DB schema
+│   ├── seed.js            # Seed data + admin user
+│   ├── db.js              # DB connection + getSiteContent()
+│   ├── routes/            # public + admin routes
+│   └── ...
+├── views/                 # EJS templates (home, admin, partials)
+├── assets/                # Images, CSS, JS (copied to public/assets on Netlify build)
+│   ├── img/
+│   ├── css/
+│   └── js/
+├── public/                # Netlify publish dir (assets copied here during build)
+├── netlify/
+│   └── functions/
+│       └── server.js      # Netlify function entry (wraps app)
+└── netlify.toml           # Build + redirects (assets first, then function)
+```
+
+---
+
+## License
+
+Use and modify as needed for your project.
